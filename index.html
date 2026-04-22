@@ -503,26 +503,6 @@
 
   <div class="main">
 
-    <div class="config-panel">
-      <div class="field">
-        <label>ID da Planilha (Google Sheets)</label>
-        <input id="sheetId" type="text" placeholder="1BxiMVs0XRA5nFMdK..." value="1tQ49EtHlq3MkQY7JfyCf9uvr9xKx77RtS0N2LpO6vt0"/>
-      </div>
-      <div class="field" style="max-width:160px">
-        <label>Aba</label>
-        <input id="sheetTab" type="text" placeholder="Página1" value="IAP MAIO 26"/>
-      </div>
-      <div class="field" style="max-width:130px">
-        <label>Coluna Status</label>
-        <input id="colStatus" type="text" placeholder="G" value="G" maxlength="3"/>
-      </div>
-      <div class="field" style="max-width:200px">
-        <label>API Key Google</label>
-        <input id="apiKey" type="password" placeholder="AIza..."/>
-      </div>
-      <button class="btn" onclick="loadData()">Carregar</button>
-    </div>
-
     <div id="statusMsg" class="status-msg"></div>
 
     <div class="cards">
@@ -621,14 +601,13 @@
 </div>
 
 <script>
-  // ── Persistência de config ──
-  const fields = ['sheetId','sheetTab','colStatus','apiKey'];
-  fields.forEach(id => {
-    const el = document.getElementById(id);
-    const saved = localStorage.getItem('dash_' + id);
-    if (saved) el.value = saved;
-    el.addEventListener('input', () => localStorage.setItem('dash_' + id, el.value));
-  });
+  // ── Configuração fixa ──
+  const CONFIG = {
+    sheetId: '1tQ49EtHlq3MkQY7JfyCf9uvr9xKx77RtS0N2LpO6vt0',
+    tab:     'IAP MAIO 26',
+    col:     'G',
+    apiKey:  'AIzaSyB7Y3yf7qh5qIVX76sdjq5QBqoBfnO__34'
+  };
 
   // ── Dados globais ──
   let _total = 0, _retirados = 0, _pendentes = 0, _naoRetirou = 0;
@@ -653,17 +632,7 @@
   }
 
   async function loadData() {
-    const sheetId = document.getElementById('sheetId').value.trim();
-    const tab     = document.getElementById('sheetTab').value.trim() || 'Página1';
-    const col     = document.getElementById('colStatus').value.trim().toUpperCase() || 'G';
-    const apiKey  = document.getElementById('apiKey').value.trim();
-
-    if (!sheetId || !apiKey) {
-      showStatus('⚠️ Preencha o ID da planilha e a API Key.', 'error');
-      return;
-    }
-
-    showStatus('Carregando dados...', 'loading');
+    const { sheetId, tab, col, apiKey } = CONFIG;
 
     const range = encodeURIComponent(`${tab}!${col}2:${col}10000`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
@@ -705,8 +674,9 @@
       // Atualiza modo TV (se aberto)
       updateTV();
 
+      const now = new Date();
       document.getElementById('lastUpdate').textContent =
-        'Atualizado às ' + new Date().toLocaleTimeString('pt-BR');
+        'Atualizado às ' + now.toLocaleTimeString('pt-BR') + ' · próxima atualização em 10 min';
 
       showStatus('', '');
 
@@ -745,7 +715,7 @@
     updateTV();
     startClock();
     // auto-refresh a cada 60s no modo TV
-    autoRefreshTimer = setInterval(() => loadData(), 60000);
+    autoRefreshTimer = setInterval(() => loadData(), 600000);
   }
 
   function closeTV() {
@@ -763,10 +733,9 @@
     setInterval(tick, 1000);
   }
 
-  // Auto-carregar se já tiver config salva
-  if (localStorage.getItem('dash_sheetId') && localStorage.getItem('dash_apiKey')) {
-    loadData();
-  }
+  // Carrega ao abrir e atualiza a cada 10 minutos
+  loadData();
+  setInterval(() => loadData(), 600000);
 </script>
 </body>
 </html>
