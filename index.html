@@ -18,6 +18,16 @@
     .page-normal { display: block; }
     .page-tv { display: none; }
 
+    .event-title {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      padding: 14px 24px;
+    }
+
     /* Topbar */
     .topbar {
       background: #fff;
@@ -368,6 +378,8 @@
 <!-- ══════════ PÁGINA NORMAL ══════════ -->
 <div class="page-normal" id="pageNormal">
 
+  <div class="event-title">Intensivo da Alta Performance</div>
+
   <div class="topbar">
     <div class="logo">
       <div class="logo-icon">🎟️</div>
@@ -387,7 +399,7 @@
     <div class="cards">
       <div class="card total" id="cardTotal">
         <div class="card-icon-bg">🎟️</div>
-        <div class="card-label">Total de Inscritos</div>
+        <div class="card-label">Total de Confirmados</div>
         <div class="card-value" id="valTotal">—</div>
       </div>
       <div class="card retirado" id="cardRetirado">
@@ -479,7 +491,7 @@
     <div class="tv-card total" id="tvCardTotal">
       <div class="tv-card-icon">🎟️</div>
       <div class="tv-card-bg-num" id="tvBgTotal"></div>
-      <div class="tv-card-label">Total de Inscritos</div>
+      <div class="tv-card-label">Total de Confirmados</div>
       <div class="tv-card-value" id="tvValTotal">—</div>
       <div class="tv-progress"><div class="tv-progress-fill" style="width:100%"></div></div>
     </div>
