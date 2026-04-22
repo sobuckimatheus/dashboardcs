@@ -546,7 +546,8 @@
 
   async function loadData() {
     const { sheetId, tab, col, apiKey } = CONFIG;
-    const range = encodeURIComponent(`${tab}!${col}2:${col}10000`);
+    // Busca B até G para usar coluna B (nome) como total e G (status) para filtros
+    const range = encodeURIComponent(`${tab}!B2:${col}10000`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
     try {
@@ -558,11 +559,13 @@
         return;
       }
 
-      const rows      = json.values || [];
-      const validas   = rows.filter(r => r[0] && r[0].trim() !== '');
-      _retirados  = validas.filter(r => r[0].trim().toUpperCase() === 'RETIROU').length;
-      _pendentes  = validas.filter(r => r[0].trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
-      _total      = validas.length;
+      const rows = json.values || [];
+      // Coluna B = índice 0 (nome), coluna G = índice 5
+      const colStatus = 5;
+      const comNome   = rows.filter(r => r[0] && r[0].trim() !== '');
+      _total      = comNome.length;
+      _retirados  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'RETIROU').length;
+      _pendentes  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
       const faltam      = Math.max(META - _total, 0);
