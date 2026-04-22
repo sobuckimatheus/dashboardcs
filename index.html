@@ -15,7 +15,6 @@
       min-height: 100vh;
     }
 
-    /* ── MODO NORMAL ── */
     .page-normal { display: block; }
     .page-tv { display: none; }
 
@@ -32,11 +31,7 @@
       z-index: 10;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .logo { display: flex; align-items: center; gap: 10px; }
 
     .logo-icon {
       width: 36px; height: 36px;
@@ -46,290 +41,196 @@
       font-size: 18px;
     }
 
-    .logo-text {
-      font-size: 17px;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
+    .logo-text { font-size: 17px; font-weight: 700; color: #1e293b; }
     .logo-text span { color: #6366f1; }
 
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
 
     .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ecfdf5;
-      border: 1px solid #6ee7b7;
-      color: #059669;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #ecfdf5; border: 1px solid #6ee7b7;
+      color: #059669; font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 100px;
     }
 
     .live-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-      animation: blink 1.5s infinite;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #10b981; animation: blink 1.5s infinite;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
     .btn-tv {
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      cursor: pointer;
-      transition: opacity 0.2s;
+      color: #fff; border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+      padding: 8px 18px; cursor: pointer; transition: opacity 0.2s;
     }
     .btn-tv:hover { opacity: 0.85; }
 
-    /* Main content */
-    .main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 32px 24px;
-    }
-
-    /* Config panel */
-    .config-panel {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: flex-end;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      flex: 1;
-      min-width: 160px;
-    }
-
-    label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #64748b;
-    }
-
-    input, select {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 8px;
-      color: #1e293b;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      padding: 9px 13px;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #6366f1;
-      background: #fff;
-    }
-
-    input::placeholder { color: #94a3b8; }
-
-    .btn {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 10px 24px;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.1s;
-      white-space: nowrap;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn:active { transform: scale(0.98); }
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .main { max-width: 1000px; margin: 0 auto; padding: 32px 24px; }
 
     /* Status */
     .status-msg {
-      font-size: 13px;
-      padding: 10px 16px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-      font-weight: 500;
+      font-size: 13px; padding: 10px 16px; border-radius: 8px;
+      margin-bottom: 20px; display: none; font-weight: 500;
     }
-    .status-msg.error { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; display: block; }
+    .status-msg.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; display: block; }
     .status-msg.loading { background: #f0f9ff; border: 1px solid #93c5fd; color: #2563eb; display: block; }
 
-    /* Cards */
+    /* Cards linha 1: Total + Retirados + Aguardando */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .card {
-      border-radius: 16px;
-      padding: 26px 24px;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(14px);
+      border-radius: 16px; padding: 26px 24px;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(14px);
       transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s;
       cursor: default;
     }
 
     .card.visible { opacity: 1; transform: translateY(0); }
-    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
-    .card.visible:hover { transform: translateY(-2px); }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-2px) !important; }
 
     .card.total    { background: linear-gradient(135deg, #6366f1, #818cf8); }
     .card.retirado { background: linear-gradient(135deg, #10b981, #34d399); }
     .card.pendente { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
-    .card.naoretirou { background: linear-gradient(135deg, #ef4444, #f87171); }
 
     .card-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 10px;
     }
 
     .card-value {
-      font-size: 56px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: #fff;
+      font-size: 56px; font-weight: 900; line-height: 1;
+      letter-spacing: -0.03em; color: #fff;
     }
 
     .card-icon-bg {
-      position: absolute;
-      right: -10px;
-      top: -10px;
-      font-size: 70px;
-      opacity: 0.12;
-      user-select: none;
-      pointer-events: none;
+      position: absolute; right: -10px; top: -10px;
+      font-size: 70px; opacity: 0.12;
+      user-select: none; pointer-events: none;
     }
 
-    /* Progress */
-    .progress-section {
+    /* Card de Meta — linha própria, mais largo */
+    .meta-row {
+      margin-bottom: 16px;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.45s ease 0.2s, transform 0.45s ease 0.2s;
+    }
+    .meta-row.visible { opacity: 1; transform: translateY(0); }
+
+    .meta-card {
       background: #fff;
       border: 1px solid #e2e8f0;
       border-radius: 16px;
       padding: 24px 28px;
-      margin-bottom: 20px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.45s ease 0.3s, transform 0.45s ease 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-left {
+      display: flex; flex-direction: column; gap: 4px;
+      min-width: 180px;
+    }
+
+    .meta-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #64748b;
+    }
+
+    .meta-numbers {
+      display: flex; align-items: baseline; gap: 10px;
+    }
+
+    .meta-faltam {
+      font-size: 52px; font-weight: 900; line-height: 1;
+      letter-spacing: -0.03em; color: #6366f1;
+    }
+
+    .meta-faltam-label {
+      font-size: 14px; font-weight: 600; color: #94a3b8;
+    }
+
+    .meta-right { flex: 1; min-width: 200px; }
+
+    .meta-bar-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .meta-bar-title { font-size: 14px; font-weight: 600; color: #475569; }
+
+    .meta-pct {
+      font-size: 28px; font-weight: 900;
+      background: linear-gradient(135deg, #6366f1, #10b981);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .meta-bar-track {
+      height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden;
+    }
+
+    .meta-bar-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, #6366f1, #10b981);
+      width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .meta-bar-labels {
+      display: flex; justify-content: space-between;
+      font-size: 11px; font-weight: 500; color: #94a3b8; margin-top: 6px;
+    }
+
+    /* Progress retirada */
+    .progress-section {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 24px 28px; margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.45s ease 0.35s, transform 0.45s ease 0.35s;
     }
     .progress-section.visible { opacity: 1; transform: translateY(0); }
 
     .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;
     }
-
-    .progress-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
+    .progress-title { font-size: 15px; font-weight: 700; color: #1e293b; }
     .progress-pct {
-      font-size: 30px;
-      font-weight: 900;
+      font-size: 30px; font-weight: 900;
       background: linear-gradient(135deg, #10b981, #6366f1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .bar-track {
-      height: 12px;
-      background: #f1f5f9;
-      border-radius: 100px;
-      overflow: hidden;
-    }
-
+    .bar-track { height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden; }
     .bar-fill {
-      height: 100%;
-      border-radius: 100px;
+      height: 100%; border-radius: 100px;
       background: linear-gradient(90deg, #10b981, #6366f1);
-      width: 0%;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .progress-legend {
-      display: flex;
-      gap: 18px;
-      margin-top: 12px;
-    }
-
+    .progress-legend { display: flex; gap: 18px; margin-top: 12px; }
     .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #64748b;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 500; color: #64748b;
     }
-
-    .legend-dot {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-    }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
 
     /* Footer */
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #94a3b8;
-      margin-top: 4px;
-    }
-
+    .footer { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 4px; }
     .refresh-btn {
-      background: transparent;
-      border: 1.5px solid #e2e8f0;
-      color: #64748b;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-      margin-left: 8px;
+      background: transparent; border: 1.5px solid #e2e8f0; color: #64748b;
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s; margin-left: 8px;
     }
     .refresh-btn:hover { border-color: #6366f1; color: #6366f1; }
 
@@ -337,151 +238,94 @@
        MODO TV
     ═══════════════════════════════════════ */
     .page-tv {
-      background: #0f172a;
-      min-height: 100vh;
-      padding: 0;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
+      background: #0f172a; min-height: 100vh; padding: 0;
+      position: fixed; inset: 0; z-index: 100;
     }
 
     .tv-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .tv-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.01em;
-    }
-
+    .tv-title { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
     .tv-title span { color: #818cf8; }
 
-    .tv-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .tv-meta { display: flex; align-items: center; gap: 16px; }
 
     .tv-live {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(16,185,129,0.15);
-      border: 1px solid rgba(16,185,129,0.4);
-      color: #34d399;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 100px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4);
+      color: #34d399; font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px;
     }
 
-    .tv-time {
-      font-size: 15px;
-      font-weight: 600;
-      color: #94a3b8;
-    }
+    .tv-time { font-size: 15px; font-weight: 600; color: #94a3b8; }
 
     .btn-exit-tv {
-      background: rgba(255,255,255,0.08);
-      color: #cbd5e1;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      cursor: pointer;
-      transition: background 0.2s;
+      background: rgba(255,255,255,0.08); color: #cbd5e1;
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+      padding: 8px 18px; cursor: pointer; transition: background 0.2s;
     }
     .btn-exit-tv:hover { background: rgba(255,255,255,0.14); }
 
+    /* Grid TV: 2 colunas × 2 linhas */
     .tv-cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      padding: 28px 48px;
-      height: calc(100vh - 90px);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px 48px;
+      height: calc(100vh - 80px);
     }
 
     .tv-card {
       border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: scale(0.95);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: scale(0.95);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
-
     .tv-card.visible { opacity: 1; transform: scale(1); }
 
     .tv-card.total    { background: linear-gradient(145deg, #4f46e5, #7c3aed); }
     .tv-card.retirado { background: linear-gradient(145deg, #059669, #10b981); }
     .tv-card.pendente { background: linear-gradient(145deg, #d97706, #f59e0b); }
-    .tv-card.naoretirou { background: linear-gradient(145deg, #dc2626, #ef4444); }
+    .tv-card.meta     { background: linear-gradient(145deg, #0369a1, #0ea5e9); }
 
-    .tv-card-icon {
-      font-size: 52px;
-      opacity: 0.25;
-      position: absolute;
-      top: 20px;
-      right: 28px;
-    }
+    .tv-card-icon { font-size: 52px; opacity: 0.2; position: absolute; top: 20px; right: 28px; }
 
     .tv-card-label {
-      font-size: clamp(16px, 2vw, 22px);
-      font-weight: 700;
-      color: rgba(255,255,255,0.75);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-      text-align: center;
+      font-size: clamp(14px, 1.8vw, 20px); font-weight: 700;
+      color: rgba(255,255,255,0.75); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 6px; text-align: center;
     }
 
     .tv-card-value {
-      font-size: clamp(80px, 14vw, 160px);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1;
-      letter-spacing: -0.04em;
+      font-size: clamp(70px, 12vw, 140px); font-weight: 900;
+      color: #fff; line-height: 1; letter-spacing: -0.04em;
+    }
+
+    .tv-card-sub {
+      font-size: clamp(14px, 2vw, 22px); font-weight: 700;
+      color: rgba(255,255,255,0.6); margin-top: 6px; text-align: center;
     }
 
     .tv-card-bg-num {
-      position: absolute;
-      bottom: -30px;
-      left: -10px;
-      font-size: 220px;
-      font-weight: 900;
-      color: rgba(0,0,0,0.1);
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
+      position: absolute; bottom: -30px; left: -10px;
+      font-size: 200px; font-weight: 900;
+      color: rgba(0,0,0,0.1); line-height: 1;
+      user-select: none; pointer-events: none;
     }
 
-    /* Progresso TV */
     .tv-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: rgba(255,255,255,0.15);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 6px; background: rgba(255,255,255,0.15);
     }
-
     .tv-progress-fill {
-      height: 100%;
-      background: rgba(255,255,255,0.6);
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 0%;
+      height: 100%; background: rgba(255,255,255,0.55);
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); width: 0%;
     }
   </style>
 </head>
@@ -505,6 +349,7 @@
 
     <div id="statusMsg" class="status-msg"></div>
 
+    <!-- Cards: Total · Retirados · Aguardando -->
     <div class="cards">
       <div class="card total" id="cardTotal">
         <div class="card-icon-bg">🎟️</div>
@@ -521,13 +366,35 @@
         <div class="card-label">Aguardando Retirada</div>
         <div class="card-value" id="valPendente">—</div>
       </div>
-      <div class="card naoretirou" id="cardNaoRetirou">
-        <div class="card-icon-bg">❌</div>
-        <div class="card-label">Não Retirou</div>
-        <div class="card-value" id="valNaoRetirou">—</div>
+    </div>
+
+    <!-- Card Meta 500 inscritos -->
+    <div class="meta-row" id="metaRow">
+      <div class="meta-card">
+        <div class="meta-left">
+          <div class="meta-label">🎯 Meta — 500 Inscritos</div>
+          <div class="meta-numbers">
+            <div class="meta-faltam" id="valFaltam">—</div>
+            <div class="meta-faltam-label">faltam</div>
+          </div>
+        </div>
+        <div class="meta-right">
+          <div class="meta-bar-header">
+            <span class="meta-bar-title">Progresso da meta</span>
+            <span class="meta-pct" id="metaPct">0%</span>
+          </div>
+          <div class="meta-bar-track">
+            <div class="meta-bar-fill" id="metaBarFill"></div>
+          </div>
+          <div class="meta-bar-labels">
+            <span id="valTotalLabel">0 inscritos</span>
+            <span>meta: 500</span>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Taxa de Retirada -->
     <div class="progress-section" id="progressSection">
       <div class="progress-header">
         <span class="progress-title">Taxa de Retirada</span>
@@ -539,7 +406,6 @@
       <div class="progress-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div> Retirou</div>
         <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> Aguardando</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> Não Retirou</div>
       </div>
     </div>
 
@@ -589,19 +455,21 @@
       <div class="tv-progress"><div class="tv-progress-fill" id="tvBarPendente"></div></div>
     </div>
 
-    <div class="tv-card naoretirou" id="tvCardNaoRetirou">
-      <div class="tv-card-icon">❌</div>
-      <div class="tv-card-bg-num" id="tvBgNaoRetirou"></div>
-      <div class="tv-card-label">Não Retirou</div>
-      <div class="tv-card-value" id="tvValNaoRetirou">—</div>
-      <div class="tv-progress"><div class="tv-progress-fill" id="tvBarNaoRetirou"></div></div>
+    <div class="tv-card meta" id="tvCardMeta">
+      <div class="tv-card-icon">🎯</div>
+      <div class="tv-card-bg-num" id="tvBgMeta"></div>
+      <div class="tv-card-label">Meta — 500 Inscritos</div>
+      <div class="tv-card-value" id="tvValFaltam">—</div>
+      <div class="tv-card-sub" id="tvMetaPct">—% atingido</div>
+      <div class="tv-progress"><div class="tv-progress-fill" id="tvBarMeta"></div></div>
     </div>
 
   </div>
 </div>
 
 <script>
-  // ── Configuração fixa ──
+  const META = 500;
+
   const CONFIG = {
     sheetId: '1tQ49EtHlq3MkQY7JfyCf9uvr9xKx77RtS0N2LpO6vt0',
     tab:     'IAP MAIO 26',
@@ -609,9 +477,9 @@
     apiKey:  'AIzaSyB7Y3yf7qh5qIVX76sdjq5QBqoBfnO__34'
   };
 
-  // ── Dados globais ──
-  let _total = 0, _retirados = 0, _pendentes = 0, _naoRetirou = 0;
+  let _total = 0, _retirados = 0, _pendentes = 0;
   let autoRefreshTimer = null;
+  let clockStarted = false;
 
   function showStatus(msg, type) {
     const el = document.getElementById('statusMsg');
@@ -633,7 +501,6 @@
 
   async function loadData() {
     const { sheetId, tab, col, apiKey } = CONFIG;
-
     const range = encodeURIComponent(`${tab}!${col}2:${col}10000`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
@@ -650,33 +517,36 @@
       const validas   = rows.filter(r => r[0] && r[0].trim() !== '');
       _retirados  = validas.filter(r => r[0].trim().toUpperCase() === 'RETIROU').length;
       _pendentes  = validas.filter(r => r[0].trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
-      _naoRetirou = validas.filter(r => r[0].trim().toUpperCase() === 'NÃO RETIROU').length;
-      _total      = _retirados + _pendentes + _naoRetirou;
-      const pct   = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
+      const naoRetirou = validas.filter(r => r[0].trim().toUpperCase() === 'NÃO RETIROU').length;
+      _total      = _retirados + _pendentes + naoRetirou;
 
-      // Atualiza cards normais
-      animateValue(document.getElementById('valTotal'),     _total);
-      animateValue(document.getElementById('valRetirado'),  _retirados);
-      animateValue(document.getElementById('valPendente'),  _pendentes);
-      animateValue(document.getElementById('valNaoRetirou'),_naoRetirou);
+      const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
+      const faltam      = Math.max(META - _total, 0);
+      const pctMeta     = Math.min(Math.round((_total / META) * 100), 100);
 
-      // Progress
-      document.getElementById('progressPct').textContent = pct + '%';
+      // Cards normais
+      animateValue(document.getElementById('valTotal'),    _total);
+      animateValue(document.getElementById('valRetirado'), _retirados);
+      animateValue(document.getElementById('valPendente'), _pendentes);
+      animateValue(document.getElementById('valFaltam'),   faltam);
+
+      document.getElementById('metaPct').textContent      = pctMeta + '%';
+      document.getElementById('valTotalLabel').textContent = _total + ' inscritos';
+      document.getElementById('progressPct').textContent  = pctRetirada + '%';
+
       setTimeout(() => {
-        document.getElementById('barFill').style.width = pct + '%';
+        document.getElementById('metaBarFill').style.width = pctMeta + '%';
+        document.getElementById('barFill').style.width     = pctRetirada + '%';
       }, 100);
 
-      // Anima entrada dos cards
-      document.querySelectorAll('.card, .progress-section').forEach((el, i) => {
+      document.querySelectorAll('.card, .meta-row, .progress-section').forEach((el, i) => {
         setTimeout(() => el.classList.add('visible'), i * 70);
       });
 
-      // Atualiza modo TV (se aberto)
-      updateTV();
+      updateTV(faltam, pctMeta, pctRetirada);
 
-      const now = new Date();
       document.getElementById('lastUpdate').textContent =
-        'Atualizado às ' + now.toLocaleTimeString('pt-BR') + ' · próxima atualização em 10 min';
+        'Atualizado às ' + new Date().toLocaleTimeString('pt-BR') + ' · próxima atualização em 10 min';
 
       showStatus('', '');
 
@@ -685,24 +555,25 @@
     }
   }
 
-  function updateTV() {
-    document.getElementById('tvValTotal').textContent      = _total     > 0 ? _total     : '—';
-    document.getElementById('tvValRetirado').textContent   = _retirados > 0 ? _retirados : '—';
-    document.getElementById('tvValPendente').textContent   = _pendentes > 0 ? _pendentes : '—';
-    document.getElementById('tvValNaoRetirou').textContent = _naoRetirou> 0 ? _naoRetirou: '—';
+  function updateTV(faltam, pctMeta, pctRetirada) {
+    document.getElementById('tvValTotal').textContent    = _total     > 0 ? _total     : '—';
+    document.getElementById('tvValRetirado').textContent = _retirados > 0 ? _retirados : '—';
+    document.getElementById('tvValPendente').textContent = _pendentes > 0 ? _pendentes : '—';
+    document.getElementById('tvValFaltam').textContent   = faltam !== undefined ? faltam : '—';
+    document.getElementById('tvMetaPct').textContent     = (pctMeta !== undefined ? pctMeta : 0) + '% atingido';
 
-    document.getElementById('tvBgTotal').textContent      = _total     || '';
-    document.getElementById('tvBgRetirado').textContent   = _retirados || '';
-    document.getElementById('tvBgPendente').textContent   = _pendentes || '';
-    document.getElementById('tvBgNaoRetirou').textContent = _naoRetirou|| '';
+    document.getElementById('tvBgTotal').textContent    = _total     || '';
+    document.getElementById('tvBgRetirado').textContent = _retirados || '';
+    document.getElementById('tvBgPendente').textContent = _pendentes || '';
+    document.getElementById('tvBgMeta').textContent     = faltam     || '';
 
-    if (_total > 0) {
-      setTimeout(() => {
-        document.getElementById('tvBarRetirado').style.width   = Math.round(_retirados  / _total * 100) + '%';
-        document.getElementById('tvBarPendente').style.width   = Math.round(_pendentes  / _total * 100) + '%';
-        document.getElementById('tvBarNaoRetirou').style.width = Math.round(_naoRetirou / _total * 100) + '%';
-      }, 200);
-    }
+    setTimeout(() => {
+      if (_total > 0) {
+        document.getElementById('tvBarRetirado').style.width = Math.round(_retirados / _total * 100) + '%';
+        document.getElementById('tvBarPendente').style.width = Math.round(_pendentes / _total * 100) + '%';
+      }
+      document.getElementById('tvBarMeta').style.width = (pctMeta || 0) + '%';
+    }, 200);
 
     document.querySelectorAll('.tv-card').forEach((el, i) => {
       setTimeout(() => el.classList.add('visible'), i * 80);
@@ -712,9 +583,11 @@
   function openTV() {
     document.getElementById('pageTV').style.display = 'block';
     document.getElementById('pageNormal').style.display = 'none';
-    updateTV();
-    startClock();
-    // auto-refresh a cada 60s no modo TV
+    const faltam  = Math.max(META - _total, 0);
+    const pctMeta = Math.min(Math.round((_total / META) * 100), 100);
+    const pctRet  = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
+    updateTV(faltam, pctMeta, pctRet);
+    if (!clockStarted) { startClock(); clockStarted = true; }
     autoRefreshTimer = setInterval(() => loadData(), 600000);
   }
 
@@ -733,7 +606,6 @@
     setInterval(tick, 1000);
   }
 
-  // Carrega ao abrir e atualiza a cada 10 minutos
   loadData();
   setInterval(() => loadData(), 600000);
 </script>
