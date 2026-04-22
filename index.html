@@ -545,9 +545,9 @@
   }
 
   async function loadData() {
-    const { sheetId, tab, col, apiKey } = CONFIG;
-    // Busca B até G para usar coluna B (nome) como total e G (status) para filtros
-    const range = encodeURIComponent(`${tab}!B2:${col}10000`);
+    const { sheetId, tab, apiKey } = CONFIG;
+    // Busca direto das células com fórmulas: L367 = confirmados, M367 = retirados
+    const range = encodeURIComponent(`${tab}!L367:M367`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
     try {
@@ -559,16 +559,10 @@
         return;
       }
 
-      const rows = json.values || [];
-      // Coluna B = índice 0 (nome), coluna G = índice 5
-      const colStatus = 5;
-      const comNome   = rows.filter(r => r[0] && r[0].trim() !== '');
-      _total      = comNome.length;
-      console.log('Total linhas com nome (col B):', _total);
-      console.log('Última linha encontrada (nome):', comNome[comNome.length - 1]?.[0]);
-      console.log('Linha da planilha:', comNome.length + 1, '(aprox)');
-      _retirados  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'RETIROU').length;
-      _pendentes  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
+      const row  = (json.values || [[]])[0];
+      _total     = parseInt(row[0]) || 0;
+      _retirados = parseInt(row[1]) || 0;
+      _pendentes = _total - _retirados;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
       const faltam      = Math.max(META - _total, 0);
