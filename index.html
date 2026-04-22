@@ -564,6 +564,9 @@
       const colStatus = 5;
       const comNome   = rows.filter(r => r[0] && r[0].trim() !== '');
       _total      = comNome.length;
+      console.log('Total linhas com nome (col B):', _total);
+      console.log('Última linha encontrada (nome):', comNome[comNome.length - 1]?.[0]);
+      console.log('Linha da planilha:', comNome.length + 1, '(aprox)');
       _retirados  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'RETIROU').length;
       _pendentes  = comNome.filter(r => (r[colStatus] || '').trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
 
