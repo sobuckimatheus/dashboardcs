@@ -562,8 +562,7 @@
       const validas   = rows.filter(r => r[0] && r[0].trim() !== '');
       _retirados  = validas.filter(r => r[0].trim().toUpperCase() === 'RETIROU').length;
       _pendentes  = validas.filter(r => r[0].trim().toUpperCase() === 'AGUARDANDO RETIRAR').length;
-      const naoRetirou = validas.filter(r => r[0].trim().toUpperCase() === 'NÃO RETIROU').length;
-      _total      = _retirados + _pendentes + naoRetirou;
+      _total      = validas.length;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
       const faltam      = Math.max(META - _total, 0);
