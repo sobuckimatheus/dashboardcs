@@ -15,9 +15,6 @@
       min-height: 100vh;
     }
 
-    .page-normal { display: block; }
-    .page-tv { display: none; }
-
     .dashboard-title {
       font-size: 42px;
       font-weight: 800;
@@ -53,8 +50,6 @@
     .logo-text { font-size: 17px; font-weight: 700; color: #1e293b; }
     .logo-text span { color: #6366f1; }
 
-    .topbar-right { display: flex; align-items: center; gap: 10px; }
-
     .live-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: #ecfdf5; border: 1px solid #6ee7b7;
@@ -69,14 +64,6 @@
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-    .btn-tv {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #fff; border: none; border-radius: 8px;
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-      padding: 8px 18px; cursor: pointer; transition: opacity 0.2s;
-    }
-    .btn-tv:hover { opacity: 0.85; }
-
     .main { max-width: 1000px; margin: 0 auto; padding: 32px 24px; }
 
     /* Status */
@@ -87,7 +74,7 @@
     .status-msg.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; display: block; }
     .status-msg.loading { background: #f0f9ff; border: 1px solid #93c5fd; color: #2563eb; display: block; }
 
-    /* Cards linha 1: Total + Retirados + Aguardando */
+    /* Cards */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -126,7 +113,7 @@
       user-select: none; pointer-events: none;
     }
 
-    /* Card de Meta — linha própria, mais largo */
+    /* Card de Meta */
     .meta-row {
       margin-bottom: 16px;
       opacity: 0; transform: translateY(14px);
@@ -135,45 +122,31 @@
     .meta-row.visible { opacity: 1; transform: translateY(0); }
 
     .meta-card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 24px 28px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 24px 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
     }
 
-    .meta-left {
-      display: flex; flex-direction: column; gap: 4px;
-      min-width: 180px;
-    }
+    .meta-left { display: flex; flex-direction: column; gap: 4px; min-width: 180px; }
 
     .meta-label {
       font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; color: #64748b;
     }
 
-    .meta-numbers {
-      display: flex; align-items: baseline; gap: 10px;
-    }
+    .meta-numbers { display: flex; align-items: baseline; gap: 10px; }
 
     .meta-faltam {
       font-size: 52px; font-weight: 900; line-height: 1;
       letter-spacing: -0.03em; color: #6366f1;
     }
 
-    .meta-faltam-label {
-      font-size: 14px; font-weight: 600; color: #94a3b8;
-    }
+    .meta-faltam-label { font-size: 14px; font-weight: 600; color: #94a3b8; }
 
     .meta-right { flex: 1; min-width: 200px; }
 
     .meta-bar-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-      margin-bottom: 10px;
+      display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;
     }
 
     .meta-bar-title { font-size: 14px; font-weight: 600; color: #475569; }
@@ -184,9 +157,7 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .meta-bar-track {
-      height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden;
-    }
+    .meta-bar-track { height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden; }
 
     .meta-bar-fill {
       height: 100%; border-radius: 100px;
@@ -199,7 +170,7 @@
       font-size: 11px; font-weight: 500; color: #94a3b8; margin-top: 6px;
     }
 
-    /* Progress retirada */
+    /* Taxa de Retirada */
     .progress-section {
       background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
       padding: 24px 28px; margin-bottom: 20px;
@@ -219,36 +190,13 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .bar-track { height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden; }
-    .bar-fill {
-      height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, #10b981, #6366f1);
-      width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    .progress-stats { display: flex; gap: 0; margin-bottom: 14px; }
 
-    .progress-legend { display: flex; gap: 18px; margin-top: 12px; }
-    .legend-item {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 500; color: #64748b;
-    }
-    .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
-
-    /* Linha de stats da taxa */
-    .progress-stats {
-      display: flex; gap: 0; margin-bottom: 14px;
-    }
-
-    .pstat {
-      flex: 1; text-align: center; padding: 12px 8px;
-      border-radius: 12px;
-    }
-
-    .pstat.green { background: #f0fdf4; }
+    .pstat { flex: 1; text-align: center; padding: 12px 8px; border-radius: 12px; }
+    .pstat.green  { background: #f0fdf4; }
     .pstat.orange { background: #fffbeb; }
 
-    .pstat-num {
-      font-size: 32px; font-weight: 900; line-height: 1; letter-spacing: -0.02em;
-    }
+    .pstat-num { font-size: 32px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
     .pstat.green  .pstat-num { color: #10b981; }
     .pstat.orange .pstat-num { color: #f59e0b; }
 
@@ -257,14 +205,17 @@
       text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px;
     }
 
-    .pstat-pct {
-      font-size: 13px; font-weight: 700; margin-top: 2px;
-    }
+    .pstat-pct { font-size: 13px; font-weight: 700; margin-top: 2px; }
     .pstat.green  .pstat-pct { color: #059669; }
     .pstat.orange .pstat-pct { color: #d97706; }
 
-    .pstat-divider {
-      width: 1px; background: #e2e8f0; margin: 8px 0;
+    .pstat-divider { width: 1px; background: #e2e8f0; margin: 8px 0; }
+
+    .bar-track { height: 12px; background: #f1f5f9; border-radius: 100px; overflow: hidden; }
+    .bar-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, #10b981, #6366f1);
+      width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Footer */
@@ -276,116 +227,16 @@
       transition: border-color 0.2s, color 0.2s; margin-left: 8px;
     }
     .refresh-btn:hover { border-color: #6366f1; color: #6366f1; }
-
-    /* ═══════════════════════════════════════
-       MODO TV
-    ═══════════════════════════════════════ */
-    .page-tv {
-      background: #0f172a; min-height: 100vh; padding: 0;
-      position: fixed; inset: 0; z-index: 100;
-    }
-
-    .tv-topbar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .tv-title { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
-    .tv-title span { color: #818cf8; }
-
-    .tv-meta { display: flex; align-items: center; gap: 16px; }
-
-    .tv-live {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4);
-      color: #34d399; font-size: 13px; font-weight: 600;
-      padding: 6px 16px; border-radius: 100px;
-    }
-
-    .tv-time { font-size: 15px; font-weight: 600; color: #94a3b8; }
-
-    .btn-exit-tv {
-      background: rgba(255,255,255,0.08); color: #cbd5e1;
-      border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-      padding: 8px 18px; cursor: pointer; transition: background 0.2s;
-    }
-    .btn-exit-tv:hover { background: rgba(255,255,255,0.14); }
-
-    /* Grid TV: 2 colunas × 2 linhas */
-    .tv-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 20px;
-      padding: 20px 48px;
-      height: calc(100vh - 80px);
-    }
-
-    .tv-card {
-      border-radius: 24px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      opacity: 0; transform: scale(0.95);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    .tv-card.visible { opacity: 1; transform: scale(1); }
-
-    .tv-card.total    { background: linear-gradient(145deg, #4f46e5, #7c3aed); }
-    .tv-card.retirado { background: linear-gradient(145deg, #059669, #10b981); }
-    .tv-card.pendente { background: linear-gradient(145deg, #d97706, #f59e0b); }
-    .tv-card.meta     { background: linear-gradient(145deg, #0369a1, #0ea5e9); }
-
-    .tv-card-icon { font-size: 52px; opacity: 0.2; position: absolute; top: 20px; right: 28px; }
-
-    .tv-card-label {
-      font-size: clamp(14px, 1.8vw, 20px); font-weight: 700;
-      color: rgba(255,255,255,0.75); text-transform: uppercase;
-      letter-spacing: 0.08em; margin-bottom: 6px; text-align: center;
-    }
-
-    .tv-card-value {
-      font-size: clamp(70px, 12vw, 140px); font-weight: 900;
-      color: #fff; line-height: 1; letter-spacing: -0.04em;
-    }
-
-    .tv-card-sub {
-      font-size: clamp(14px, 2vw, 22px); font-weight: 700;
-      color: rgba(255,255,255,0.6); margin-top: 6px; text-align: center;
-    }
-
-    .tv-card-bg-num {
-      position: absolute; bottom: -30px; left: -10px;
-      font-size: 200px; font-weight: 900;
-      color: rgba(0,0,0,0.1); line-height: 1;
-      user-select: none; pointer-events: none;
-    }
-
-    .tv-progress {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 6px; background: rgba(255,255,255,0.15);
-    }
-    .tv-progress-fill {
-      height: 100%; background: rgba(255,255,255,0.55);
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); width: 0%;
-    }
   </style>
 </head>
 <body>
-
-<!-- ══════════ PÁGINA NORMAL ══════════ -->
-<div class="page-normal" id="pageNormal">
 
   <div class="topbar">
     <div class="logo">
       <div class="logo-icon">🎟️</div>
       <div class="logo-text">Dashboard de <span>Ingressos</span></div>
     </div>
-    <div class="topbar-right">
-      <div class="live-badge"><div class="live-dot"></div> Ao vivo</div>
-      <button class="btn-tv" onclick="openTV()">📺 Modo TV</button>
-    </div>
+    <div class="live-badge"><div class="live-dot"></div> Ao vivo</div>
   </div>
 
   <div class="main">
@@ -394,7 +245,6 @@
 
     <h1 class="dashboard-title">Intensivo da Alta Performance</h1>
 
-    <!-- Cards: Total · Retirados · Aguardando -->
     <div class="cards">
       <div class="card total" id="cardTotal">
         <div class="card-icon-bg">🎟️</div>
@@ -413,11 +263,10 @@
       </div>
     </div>
 
-    <!-- Card Meta 500 inscritos -->
     <div class="meta-row" id="metaRow">
       <div class="meta-card">
         <div class="meta-left">
-          <div class="meta-label">🎯 Meta — 500 Inscritos</div>
+          <div class="meta-label">🎯 Meta — 500 Confirmados</div>
           <div class="meta-numbers">
             <div class="meta-faltam" id="valFaltam">—</div>
             <div class="meta-faltam-label">faltam</div>
@@ -432,20 +281,18 @@
             <div class="meta-bar-fill" id="metaBarFill"></div>
           </div>
           <div class="meta-bar-labels">
-            <span id="valTotalLabel">0 inscritos</span>
+            <span id="valTotalLabel">0 confirmados</span>
             <span>meta: 500</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Taxa de Retirada -->
     <div class="progress-section" id="progressSection">
       <div class="progress-header">
         <span class="progress-title">Taxa de Retirada</span>
         <span class="progress-pct" id="progressPct">0%</span>
       </div>
-
       <div class="progress-stats">
         <div class="pstat green">
           <div class="pstat-num" id="statRetirado">—</div>
@@ -459,7 +306,6 @@
           <div class="pstat-pct" id="statPendentePct">—% do total</div>
         </div>
       </div>
-
       <div class="bar-track">
         <div class="bar-fill" id="barFill"></div>
       </div>
@@ -471,57 +317,6 @@
     </div>
 
   </div>
-</div>
-
-<!-- ══════════ MODO TV ══════════ -->
-<div class="page-tv" id="pageTV">
-
-  <div class="tv-topbar">
-    <div class="tv-title">Dashboard de <span>Ingressos</span></div>
-    <div class="tv-meta">
-      <div class="tv-live"><div class="live-dot"></div> Ao vivo</div>
-      <div class="tv-time" id="tvClock"></div>
-    </div>
-    <button class="btn-exit-tv" onclick="closeTV()">✕ Sair do Modo TV</button>
-  </div>
-
-  <div class="tv-cards">
-
-    <div class="tv-card total" id="tvCardTotal">
-      <div class="tv-card-icon">🎟️</div>
-      <div class="tv-card-bg-num" id="tvBgTotal"></div>
-      <div class="tv-card-label">Total de Confirmados</div>
-      <div class="tv-card-value" id="tvValTotal">—</div>
-      <div class="tv-progress"><div class="tv-progress-fill" style="width:100%"></div></div>
-    </div>
-
-    <div class="tv-card retirado" id="tvCardRetirado">
-      <div class="tv-card-icon">✅</div>
-      <div class="tv-card-bg-num" id="tvBgRetirado"></div>
-      <div class="tv-card-label">Ingressos Retirados</div>
-      <div class="tv-card-value" id="tvValRetirado">—</div>
-      <div class="tv-progress"><div class="tv-progress-fill" id="tvBarRetirado"></div></div>
-    </div>
-
-    <div class="tv-card pendente" id="tvCardPendente">
-      <div class="tv-card-icon">⏳</div>
-      <div class="tv-card-bg-num" id="tvBgPendente"></div>
-      <div class="tv-card-label">Aguardando Retirada</div>
-      <div class="tv-card-value" id="tvValPendente">—</div>
-      <div class="tv-progress"><div class="tv-progress-fill" id="tvBarPendente"></div></div>
-    </div>
-
-    <div class="tv-card meta" id="tvCardMeta">
-      <div class="tv-card-icon">🎯</div>
-      <div class="tv-card-bg-num" id="tvBgMeta"></div>
-      <div class="tv-card-label">Meta — 500 Inscritos</div>
-      <div class="tv-card-value" id="tvValFaltam">—</div>
-      <div class="tv-card-sub" id="tvMetaPct">—% atingido</div>
-      <div class="tv-progress"><div class="tv-progress-fill" id="tvBarMeta"></div></div>
-    </div>
-
-  </div>
-</div>
 
 <script>
   const META = 500;
@@ -529,13 +324,10 @@
   const CONFIG = {
     sheetId: '1tQ49EtHlq3MkQY7JfyCf9uvr9xKx77RtS0N2LpO6vt0',
     tab:     'IAP MAIO 26',
-    col:     'G',
     apiKey:  'AIzaSyB7Y3yf7qh5qIVX76sdjq5QBqoBfnO__34'
   };
 
   let _total = 0, _retirados = 0, _pendentes = 0;
-  let autoRefreshTimer = null;
-  let clockStarted = false;
 
   function showStatus(msg, type) {
     const el = document.getElementById('statusMsg');
@@ -557,8 +349,8 @@
 
   async function loadData() {
     const { sheetId, tab, apiKey } = CONFIG;
-    // Busca direto das células com fórmulas: L367 = confirmados, M367 = retirados
-    const range = encodeURIComponent(`${tab}!L367:M367`);
+    // L = confirmado (1/0), M = ingresso retirado (1/0)
+    const range = encodeURIComponent(`${tab}!L2:M2000`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
     try {
@@ -570,27 +362,24 @@
         return;
       }
 
-      const row  = (json.values || [[]])[0];
-      _total     = parseInt(row[0]) || 0;
-      _retirados = parseInt(row[1]) || 0;
+      const rows = json.values || [];
+      _total     = rows.filter(r => r[0] === '1' || r[0] === 1).length;
+      _retirados = rows.filter(r => r[1] === '1' || r[1] === 1).length;
       _pendentes = _total - _retirados;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
+      const pctPendente = _total > 0 ? Math.round((_pendentes / _total) * 100) : 0;
       const faltam      = Math.max(META - _total, 0);
       const pctMeta     = Math.min(Math.round((_total / META) * 100), 100);
 
-      // Cards normais
       animateValue(document.getElementById('valTotal'),    _total);
       animateValue(document.getElementById('valRetirado'), _retirados);
       animateValue(document.getElementById('valPendente'), _pendentes);
       animateValue(document.getElementById('valFaltam'),   faltam);
 
-      const pctPendente = _total > 0 ? Math.round((_pendentes / _total) * 100) : 0;
-
-      document.getElementById('metaPct').textContent      = pctMeta + '%';
-      document.getElementById('valTotalLabel').textContent = _total + ' inscritos';
-      document.getElementById('progressPct').textContent  = pctRetirada + '%';
-
+      document.getElementById('metaPct').textContent       = pctMeta + '%';
+      document.getElementById('valTotalLabel').textContent = _total + ' confirmados';
+      document.getElementById('progressPct').textContent   = pctRetirada + '%';
       document.getElementById('statRetirado').textContent    = _retirados;
       document.getElementById('statRetiradoPct').textContent = pctRetirada + '% do total';
       document.getElementById('statPendente').textContent    = _pendentes;
@@ -605,8 +394,6 @@
         setTimeout(() => el.classList.add('visible'), i * 70);
       });
 
-      updateTV(faltam, pctMeta, pctRetirada);
-
       document.getElementById('lastUpdate').textContent =
         'Atualizado às ' + new Date().toLocaleTimeString('pt-BR') + ' · próxima atualização em 10 min';
 
@@ -615,57 +402,6 @@
     } catch (e) {
       showStatus('❌ Falha na requisição: ' + e.message, 'error');
     }
-  }
-
-  function updateTV(faltam, pctMeta, pctRetirada) {
-    document.getElementById('tvValTotal').textContent    = _total     > 0 ? _total     : '—';
-    document.getElementById('tvValRetirado').textContent = _retirados > 0 ? _retirados : '—';
-    document.getElementById('tvValPendente').textContent = _pendentes > 0 ? _pendentes : '—';
-    document.getElementById('tvValFaltam').textContent   = faltam !== undefined ? faltam : '—';
-    document.getElementById('tvMetaPct').textContent     = (pctMeta !== undefined ? pctMeta : 0) + '% atingido';
-
-    document.getElementById('tvBgTotal').textContent    = _total     || '';
-    document.getElementById('tvBgRetirado').textContent = _retirados || '';
-    document.getElementById('tvBgPendente').textContent = _pendentes || '';
-    document.getElementById('tvBgMeta').textContent     = faltam     || '';
-
-    setTimeout(() => {
-      if (_total > 0) {
-        document.getElementById('tvBarRetirado').style.width = Math.round(_retirados / _total * 100) + '%';
-        document.getElementById('tvBarPendente').style.width = Math.round(_pendentes / _total * 100) + '%';
-      }
-      document.getElementById('tvBarMeta').style.width = (pctMeta || 0) + '%';
-    }, 200);
-
-    document.querySelectorAll('.tv-card').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 80);
-    });
-  }
-
-  function openTV() {
-    document.getElementById('pageTV').style.display = 'block';
-    document.getElementById('pageNormal').style.display = 'none';
-    const faltam  = Math.max(META - _total, 0);
-    const pctMeta = Math.min(Math.round((_total / META) * 100), 100);
-    const pctRet  = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
-    updateTV(faltam, pctMeta, pctRet);
-    if (!clockStarted) { startClock(); clockStarted = true; }
-    autoRefreshTimer = setInterval(() => loadData(), 600000);
-  }
-
-  function closeTV() {
-    document.getElementById('pageTV').style.display = 'none';
-    document.getElementById('pageNormal').style.display = 'block';
-    if (autoRefreshTimer) { clearInterval(autoRefreshTimer); autoRefreshTimer = null; }
-  }
-
-  function startClock() {
-    function tick() {
-      document.getElementById('tvClock').textContent =
-        new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-    tick();
-    setInterval(tick, 1000);
   }
 
   loadData();
