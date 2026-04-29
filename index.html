@@ -364,7 +364,7 @@
 
       // B=índice 0 (nome), L=índice 10, M=índice 11
       const rows    = json.values || [];
-      const comNome = rows.filter(r => r[0] && r[0].trim() !== '' && !r[0].includes(':'));
+      const comNome = rows.filter(r => r[0] && r[0].trim() !== '' && !(r[9] || '').includes(':'));
       _total     = comNome.filter(r => r[10] === '1').length;
       _retirados = comNome.filter(r => r[11] === '1').length;
       _pendentes = _total - _retirados;
