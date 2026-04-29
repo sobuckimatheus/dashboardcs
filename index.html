@@ -349,8 +349,8 @@
 
   async function loadData() {
     const { sheetId, tab, apiKey } = CONFIG;
-    // L = confirmado (1/0), M = ingresso retirado (1/0)
-    const range = encodeURIComponent(`${tab}!L2:M2000`);
+    // Busca B (nome) + L (confirmado 1/0) + M (retirado 1/0)
+    const range = encodeURIComponent(`${tab}!B2:M2000`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
     try {
@@ -362,9 +362,11 @@
         return;
       }
 
-      const rows = json.values || [];
-      _total     = rows.filter(r => r[0] === '1' || r[0] === 1).length;
-      _retirados = rows.filter(r => r[1] === '1' || r[1] === 1).length;
+      // B=índice 0 (nome), L=índice 10, M=índice 11
+      const rows     = json.values || [];
+      const comNome  = rows.filter(r => r[0] && r[0].trim() !== '');
+      _total     = comNome.filter(r => r[10] === '1').length;
+      _retirados = comNome.filter(r => r[11] === '1').length;
       _pendentes = _total - _retirados;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
