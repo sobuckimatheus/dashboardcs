@@ -218,6 +218,34 @@
       width: 0%; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .topbar { padding: 12px 16px; }
+      .logo-text { font-size: 14px; }
+
+      .main { padding: 20px 16px; }
+
+      .dashboard-title { font-size: 26px; margin-bottom: 16px; }
+
+      .cards { grid-template-columns: 1fr; gap: 12px; }
+
+      .card { padding: 20px; text-align: center; }
+      .card-value { font-size: 52px; }
+      .card-label { font-size: 11px; }
+      .card-icon-bg { font-size: 50px; opacity: 0.08; }
+
+      .meta-card { flex-direction: column; gap: 16px; padding: 20px; align-items: stretch; }
+      .meta-left { min-width: unset; align-items: center; }
+      .meta-numbers { justify-content: center; }
+      .meta-faltam { font-size: 44px; }
+      .meta-right { min-width: unset; }
+
+      .progress-section { padding: 20px 16px; }
+      .pstat-num { font-size: 26px; }
+      .progress-pct { font-size: 24px; }
+      .meta-pct { font-size: 22px; }
+    }
+
     /* Footer */
     .footer { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 4px; }
     .refresh-btn {
