@@ -364,12 +364,8 @@
 
       // B=índice 0 (nome), L=índice 10, M=índice 11
       const rows = json.values || [];
-      const linhasL = rows.map((r,i) => r[10] === '1' ? i+2 : null).filter(Boolean);
-      const linhasM = rows.map((r,i) => r[11] === '1' ? i+2 : null).filter(Boolean);
-      console.log('Linhas com L=1 (confirmados):', linhasL);
-      console.log('Linhas com M=1 (retirados):', linhasM);
-      _total     = linhasL.length;
-      _retirados = linhasM.length;
+      _total     = rows.filter(r => r[10] === '1').length;
+      _retirados = rows.filter(r => r[11] === '1').length;
       _pendentes = _total - _retirados;
 
       const pctRetirada = _total > 0 ? Math.round((_retirados / _total) * 100) : 0;
